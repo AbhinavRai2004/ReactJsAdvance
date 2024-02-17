@@ -4,6 +4,16 @@ import restaurantList from "./../utils/mockData";
 
 const Body = () => {
   const [ListOfRestaurant, setListOfRestaurant] = useState(restaurantList);
+  const [FilterList, setFilterList] = useState([]);
+  const [searchText, setSearchText] = useState("");
+
+  useEffect(() => {
+    setFilterList(restaurantList);
+  }, []);
+
+  // if no dependency array useEffect is called on every render
+  // if dependency array is empty = [] useEffect is called on initial render(just once)
+  // if dependency array is [FilterList]  => called everytime the FilterList is updated.
 
   // useEffect(() => {
   //   fetchData();
@@ -22,19 +32,44 @@ const Body = () => {
 
   return (
     <div className="body">
-      <div className="searchBox">search</div>
-      <button
-        className="filter-btn"
-        onClick={() => {
-          setListOfRestaurant(
-            ListOfRestaurant.filter((res) => res.data.avgRating > 4)
-          );
-        }}
-      >
-        Top Rated Restaurant
-      </button>
+      <div className="top-body">
+        <div className="searchBox">
+          <input
+            type="text"
+            className="search-ip"
+            placeholder="Search Restaurant"
+            value={searchText}
+            onChange={(e) => {
+              setSearchText(e.target.value);
+            }}
+          />
+          <button
+            className="search-btn"
+            onClick={() => {
+              setFilterList(
+                ListOfRestaurant.filter((res) =>
+                  res.data.name.toLowerCase().includes(searchText.toLowerCase())
+                )
+              );
+            }}
+          >
+            search
+          </button>
+        </div>
+        <button
+          className="filter-btn"
+          onClick={() => {
+            setFilterList(
+              ListOfRestaurant.filter((res) => res.data.avgRating > 4)
+            );
+          }}
+        >
+          Top Rated Restaurant
+        </button>
+      </div>
+
       <div className="res-container">
-        {ListOfRestaurant.map((restaurant) => (
+        {FilterList.map((restaurant) => (
           <ResCard key={restaurant.data.id} restData={restaurant} />
         ))}
       </div>

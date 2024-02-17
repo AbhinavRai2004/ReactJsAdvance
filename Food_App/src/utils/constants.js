@@ -1,3 +1,5 @@
-export const CDN_URL = "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/e33e1d3ba7d6b2bb0d45e1001b731fcf";
+export const CDN_URL =
+  "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/";
 
-export const LOGO_URL = "https://img.freepik.com/premium-vector/fresh-food-logo-images-illustration_6543-1474.jpg?w=740";
+export const LOGO_URL =
+  "https://i.fbcd.co/products/original/d32491363c1d52ac365372cd2df281d6a7cf44f8873fa0900cd4a78a1528628c.jpg";
