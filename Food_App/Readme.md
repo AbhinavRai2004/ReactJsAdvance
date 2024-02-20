@@ -61,8 +61,14 @@ import {Component} from "path";
 
 # 2 types Routing in web apps
 
-- Client Side Routing
-- Server Side Routing
+- Client Side Routing - network call not done.
+- Server Side Routing - network call done.
+
+# Modularity(Single Responsibility Principle)
+
+- more reuseable.
+- more mantainable.
+- code become more testable.
 
 # Redux Toolkit
 
